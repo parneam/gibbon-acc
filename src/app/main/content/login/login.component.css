@@ -1,0 +1,83 @@
+input[type=text]{
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  font-size: 14px;
+  box-sizing: border-box;
+}
+input[type=password] {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  font-size: 14px;
+  box-sizing: border-box;
+}
+button{
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  /*color: #2E7D32;*/
+  /*background-color: #3C4252;*/
+  font-size: 14px;
+  box-sizing: border-box;
+  cursor: pointer;
+}
+.centered {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.facebook {
+  color:#FFFFFF;
+  background-color: #3b5998;
+}
+.h1 {
+  text-align: center;
+}
+
+/* Style the tab */
+.nav-tabs {
+  /*overflow: hidden;*/
+  /*border: 1px solid #ccc;*/
+  /*background-color: #f1f1f1;*/
+}
+
+/* Style the buttons that are used to open the tab content */
+.nav-tabs button {
+  background-color: inherit;
+  float: left;
+  border: none;
+  border-bottom: 1px solid #ccc;
+  /*border-left: 1px solid #ccc;*/
+  outline: none;
+  cursor: pointer;
+  /*padding: 14px 16px;*/
+  transition: 0.3s;
+}
+
+/* Change background color of buttons on hover */
+.nav-tabs button:hover {
+  background-color: #ddd;
+}
+
+/* Create an active/current tablink class */
+.nav-tabs button.active {
+  /*background-color: #ccc;*/
+  border-top: 1px solid #ccc;
+  border-bottom: none;
+  border-left: 1px solid #ccc;
+  border-right: 1px solid #ccc;
+}
+
+/* Style the tab content */
+.tab-content {
+  display: none;
+  /*padding: 6px 12px;*/
+  /*border: 1px solid #ccc;*/
+  /*border-top: none;*/
+}
+
+ul {
+  border-bottom: none;
+}

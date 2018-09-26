@@ -1,0 +1,27 @@
+.container {
+  background-image: url("../../../../assets/images/twoleaf2.jpg");
+  background-color: #cccccc;
+  height: 800px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+}
+.row{
+  padding-top: 20px;
+}
+.card {
+  padding-top: 20px;
+}
+
+button{
+  width: 100%;
+  padding: 12px 20px;
+  /*margin: 8px 0;*/
+  /*color: #2E7D32;*/
+  /*background-color: #3C4252;*/
+  /*font-size: 14px;*/
+  /*box-sizing: border-box;*/
+  /*cursor: pointer;*/
+}
+

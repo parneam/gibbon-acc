@@ -1,0 +1,106 @@
+<!---------------------------------------------- Start Login With Tab ---------------------------------------->
+<!--<div class="container-fluid">-->
+  <!--<div class="row">-->
+    <!--<div class="col-sm-8">-->
+      <!--<img src="../../../../assets/images/twoleaf2.jpg" class="embed-responsive">-->
+      <!--<div class="centered text-capitalize">-->
+        <!--<h2>welcome to {{app.name}}</h2>-->
+      <!--</div>-->
+    <!--</div>-->
+    <!--<div class="col-sm-4">-->
+      <!--<br>-->
+      <!--<h1> {{ app.name }} </h1><br>-->
+      <!--<ul class="nav nav-tabs">-->
+        <!--<button class="col-sm-6 tab-links active" (click)="openTab($event,'login')">Login</button>-->
+        <!--<button class="col-sm-6 tab-links" (click)="openTab($event,'register')">Register</button>-->
+      <!--</ul>-->
+      <!--<div class="tab-content" id="login">-->
+        <!--<form class="container" (ngSubmit)="onLogin()" name="loginForm" [formGroup]="loginForm">-->
+          <!--<label> Email</label>-->
+          <!--<input type="text" formControlName="email">-->
+          <!--<div *ngIf="!loginFormErrors.email.required && loginFormErrors.email.email" class="alert alert-danger">-->
+            <!--Please enter a valid email address-->
+          <!--</div>-->
+        <!--<label> password</label>-->
+        <!--<input type="password" formControlName="password">-->
+          <!--<div *ngIf="loginFormErrors.password.required" class="alert alert-danger">-->
+            <!--Please enter a password-->
+          <!--</div>-->
+        <!--<button type="submit" class="btn btn-primary" [disabled]="loginForm.invalid">Submit</button>-->
+        <!--</form>-->
+        <!--<h3 class="text-center"><small>- OR -</small></h3>-->
+        <!--<form class="container" (ngSubmit)="onFacebookLogin()">-->
+          <!--<button type="submit" class="btn facebook">Sign In With Facebook</button>-->
+        <!--</form>-->
+        <!--<form class="container" (ngSubmit)="onGoogleLogin()">-->
+          <!--<button type="submit" class="btn btn-danger">Sign In With Google</button>-->
+        <!--</form>-->
+      <!--</div>-->
+
+      <!--<div class="tab-content" id="register">-->
+        <!--<form class="container" (ngSubmit)="onRegister()" name="registerForm" [formGroup]="registerForm">-->
+          <!--<label> Email</label>-->
+          <!--<input type="text" formControlName="email">-->
+          <!--<div *ngIf="!registerFormErrors.email.required && registerFormErrors.email.email" class="alert alert-danger">-->
+            <!--Please enter a valid email address-->
+          <!--</div>-->
+          <!--<label> Password</label>-->
+          <!--<input type="password" formControlName="password">-->
+          <!--<div *ngIf="registerFormErrors.password.required" class="alert alert-danger">-->
+            <!--Please enter a password-->
+          <!--</div>-->
+          <!--<label> Re-Password</label>-->
+          <!--<input type="password" formControlName="rePassword">-->
+          <!--<div *ngIf="registerFormErrors.rePassword.required" class="alert alert-danger">-->
+            <!--Please enter a re-password-->
+          <!--</div>-->
+          <!--<button type="submit" class="btn btn-primary" [disabled]="registerForm.invalid">Submit</button>-->
+        <!--</form>-->
+      <!--</div>-->
+
+    <!--</div>-->
+  <!--</div>-->
+<!--</div>-->
+<!---------------------------------------End Login With Tab ----------------------------------------->
+
+<!--------------------------------------Start LogIn no Tab ----------------------------------------->
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-8">
+      <img src="../../../../assets/images/twoleaf2.jpg" class="embed-responsive">
+      <div class="centered text-capitalize">
+        <h2>welcome to {{app.name}}</h2>
+      </div>
+    </div>
+    <div class="col-sm-4">
+      <br>
+      <h1> {{ app.name }} Login </h1><br>
+      <form (ngSubmit)="onLogin()" name="loginForm" [formGroup]="loginForm">
+        <label> Email</label>
+        <input type="text" formControlName="email">
+        <div *ngIf="!loginFormErrors.email.required && loginFormErrors.email.email" class="alert alert-danger">
+          Please enter a valid email address
+        </div>
+        <label> password</label>
+        <input type="password" formControlName="password">
+        <div *ngIf="loginFormErrors.password.required" class="alert alert-danger">
+          Please enter a password
+        </div>
+        <button type="submit" class="btn btn-primary" [disabled]="loginForm.invalid">Submit</button>
+      </form>
+      <h3 class="text-center"><small>- OR -</small></h3>
+      <form (ngSubmit)="onFacebookLogin()">
+        <button type="submit" class="btn facebook">Sign In With Facebook</button>
+      </form>
+      <form (ngSubmit)="onGoogleLogin()">
+        <button type="submit" class="btn btn-danger">Sign In With Google</button>
+      </form>
+      <div class="text-center">
+      <label>ยังไม่มีบัญชีใช่หรือไม่ </label><button class="btn-link" (click)="onRegister()"> สมัครใช้งาน</button>
+    </div>
+    </div>
+  </div>
+</div>
+
+<!------------------------------------- End Login No Tab -------------------------------------->

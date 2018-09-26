@@ -1,0 +1,74 @@
+<div class="container">
+  <div class="row">
+
+    <div class="card shadow-lg p-3 mb-5 bg-white rounded mx-auto">
+    <!--<div class="card" style="width: 20rem;">-->
+    <!--<img class="card-img-top" src="..." alt="Card image cap">-->
+    <div class="card-body">
+      <h4 class="card-title text-center">Register</h4>
+      <form class="form-group" (ngSubmit)="onSubmit()" name="profileForm" [formGroup]="profileForm">
+
+        <div class="form-group">
+          <label class="col-sm-6"> Email</label>
+          <input class="col-sm-6" type="text" formControlName="email">
+        </div>
+
+        <div class="form-group">
+          <div class="col-sm-6"></div>
+          <div class="col-sm-6" *ngIf="!profileFormErrors.email.required && profileFormErrors.email.email" class="alert alert-danger">
+            Please enter a valid email address
+          </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-sm-6"> Password</label>
+            <input class="col-sm-6" type="password" formControlName="password">
+        </div>
+
+        <div class="form-group">
+          <div class="col-sm-6"></div>
+          <div *ngIf="profileFormErrors.password.required" class="alert alert-danger">
+            Please enter a password
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="col-sm-6"> Re-Password</label>
+          <input class="col-sm-6" type="password" formControlName="rePassword">
+        </div>
+
+        <div class="form-group">
+          <div class="col-sm-6"></div>
+          <div *ngIf="profileFormErrors.rePassword.required" class="alert alert-danger">
+            Please enter a re-password
+          </div>
+        </div>
+        <div class="mx-auto">
+          <button type="submit" class="btn btn-primary " [disabled]="profileForm.invalid">Submit</button>
+        </div>
+      </form>
+      <!--<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>-->
+      <!--<a href="#" class="btn btn-primary">Go somewhere</a>-->
+    </div>
+  </div>
+
+    <!--<form class="container" (ngSubmit)="onSubmit()" name="profileForm" [formGroup]="profileForm">-->
+      <!--<label> Email</label>-->
+      <!--<input type="text" formControlName="email">-->
+      <!--<div *ngIf="!profileFormErrors.email.required && profileFormErrors.email.email" class="alert alert-danger">-->
+        <!--Please enter a valid email address-->
+      <!--</div>-->
+      <!--<label> Password</label>-->
+      <!--<input type="password" formControlName="password">-->
+      <!--<div *ngIf="profileFormErrors.password.required" class="alert alert-danger">-->
+        <!--Please enter a password-->
+      <!--</div>-->
+      <!--<label> Re-Password</label>-->
+      <!--<input type="password" formControlName="rePassword">-->
+      <!--<div *ngIf="profileFormErrors.rePassword.required" class="alert alert-danger">-->
+        <!--Please enter a re-password-->
+      <!--</div>-->
+      <!--<button type="submit" class="btn btn-primary" [disabled]="profileForm.invalid">Submit</button>-->
+    <!--</form>-->
+  </div>
+</div>
