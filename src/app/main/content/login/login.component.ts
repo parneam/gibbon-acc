@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import 'firebase/auth';
 import {UserService} from "../../../service/user.service";
@@ -15,18 +15,22 @@ export class LoginComponent implements OnInit {
   app:App={name:'Wanlaya App'};
   loginForm: FormGroup;
   loginFormErrors: any;
+  @Output()navigator: EventEmitter<boolean> = new EventEmitter<boolean>();
+
+  //START Login Config
+  logintype='loginOnly';//loginOnly','loginWithRegister'
+  //END
+
 
   //Start  ใช้สำหรับทำ login กับ register ในหน้าเดียว
-
   // registerForm: FormGroup;
   // registerFormErrors: any;
-
   //End
 
   constructor(
     private formBuilder: FormBuilder,
     private userService: UserService,
-  private router : Router
+    private router : Router
   ) {
 
     this.loginFormErrors = {
@@ -34,11 +38,15 @@ export class LoginComponent implements OnInit {
       password: {}
     };
 
+
+    //Start  ใช้สำหรับทำ login กับ register ในหน้าเดียว
     // this.registerFormErrors = {
     //   email   : {},
     //   password: {},
     //   rePassword: {}
     // };
+    //End
+
   }
 
   ngOnInit() {
@@ -52,8 +60,8 @@ export class LoginComponent implements OnInit {
       this.onLoginFormValuesChanged();
     });
 
-    //------------------ Start  ใช้สำหรับทำ login กับ register ในหน้าเดียว -------------
 
+    //------------------ Start  ใช้สำหรับทำ login กับ register ในหน้าเดียว -------------
     // this.registerForm = this.formBuilder.group({
     //   email   : ['', [Validators.required, Validators.email]],
     //   password: ['', Validators.required],
@@ -64,8 +72,8 @@ export class LoginComponent implements OnInit {
     //   this.onRegisterFormValuesChanged();
     // });
     // document.getElementById("login").click();
-
     //--------------------------- End -------------------------------------
+
 
   }
 
@@ -91,6 +99,7 @@ export class LoginComponent implements OnInit {
     }
   }
 
+  //START ใช้ทำ LogIn กับ Register ในหน้าเดียว
   // onRegisterFormValuesChanged()
   // {
   //   for ( const field in this.registerFormErrors )
@@ -112,12 +121,16 @@ export class LoginComponent implements OnInit {
   //     }
   //   }
   // }
+  //END
 
   onLogin(){
-    this.userService.doEmailLogin(this.loginForm.get('email').value, this.loginForm.get('password').value)
+    this.userService.emailLogin(this.loginForm.get('email').value, this.loginForm.get('password').value)
 
     console.log('form.email: '+this.loginForm.get('email').value)
     console.log('form.password: '+this.loginForm.get('password').value)
+    if(this.userService.isLogin()){
+      this.router.navigate(['shops'])
+    }
   }
 
   onLogout(){
@@ -125,35 +138,51 @@ export class LoginComponent implements OnInit {
   }
 
   onFacebookLogin(){
-    this.userService.doFacebookLogin()
+    this.userService.facebookLogin()
+    if(this.userService.isLogin()){
+      this.router.navigate(['shops']);
+      this.navigator.emit(true);
+      console.log('navigator'+this.navigator)
+    }
+
   }
 
   onGoogleLogin(){
-    this.userService.doGoogleLogin()
+    this.userService.googleLogin()
+    if(this.userService.isLogin()){
+      this.router.navigate(['shops'])
+    }
   }
 
   onRegister(){
-    this.router.navigate(['profile',''])
+    this.router.navigate(['register'])
   }
 
-  openTab(event,tabName) {
-    // Declare all variables
-    var i, tabcontent, tablinks;
+  // onRegisterSubmit(){
+  //
+  // }
 
-    // Get all elements with class="tabcontent" and hide them
-    tabcontent = document.getElementsByClassName("tab-content");
-    for (i = 0; i < tabcontent.length; i++) {
-      tabcontent[i].style.display = "none";
-    }
+  //START ใช้ทำ LOGIN กับ Register ในหน้าเดียว
+  // openTab(event,tabName) {
+  //   // Declare all variables
+  //   var i, tabcontent, tablinks;
+  //
+  //   // Get all elements with class="tabcontent" and hide them
+  //   tabcontent = document.getElementsByClassName("tab-content");
+  //   for (i = 0; i < tabcontent.length; i++) {
+  //     tabcontent[i].style.display = "none";
+  //   }
+  //
+  //   // Get all elements with class="tablinks" and remove the class "active"
+  //   tablinks = document.getElementsByClassName("tab-links");
+  //   for (i = 0; i < tablinks.length; i++) {
+  //     tablinks[i].className = tablinks[i].className.replace(" active", "");
+  //   }
+  //
+  //   // Show the current tab, and add an "active" class to the button that opened the tab
+  //   document.getElementById(tabName).style.display = "block";
+  //   event.currentTarget.className += " active";
+  // }
+  //END
 
-    // Get all elements with class="tablinks" and remove the class "active"
-    tablinks = document.getElementsByClassName("tab-links");
-    for (i = 0; i < tablinks.length; i++) {
-      tablinks[i].className = tablinks[i].className.replace(" active", "");
-    }
-
-    // Show the current tab, and add an "active" class to the button that opened the tab
-    document.getElementById(tabName).style.display = "block";
-    event.currentTarget.className += " active";
-  }
 }

@@ -1,5 +1,5 @@
 <!---------------------------------------------- Start Login With Tab ---------------------------------------->
-<!--<div class="container-fluid">-->
+<!--<div class="container-fluid" *ngIf="logintype==='loginWithRegister'">-->
   <!--<div class="row">-->
     <!--<div class="col-sm-8">-->
       <!--<img src="../../../../assets/images/twoleaf2.jpg" class="embed-responsive">-->
@@ -38,7 +38,7 @@
       <!--</div>-->
 
       <!--<div class="tab-content" id="register">-->
-        <!--<form class="container" (ngSubmit)="onRegister()" name="registerForm" [formGroup]="registerForm">-->
+        <!--<form class="container" (ngSubmit)="onRegisterSubmit()" name="registerForm" [formGroup]="registerForm">-->
           <!--<label> Email</label>-->
           <!--<input type="text" formControlName="email">-->
           <!--<div *ngIf="!registerFormErrors.email.required && registerFormErrors.email.email" class="alert alert-danger">-->
@@ -65,7 +65,7 @@
 
 <!--------------------------------------Start LogIn no Tab ----------------------------------------->
 
-<div class="container-fluid">
+<div class="container-fluid" *ngIf="logintype==='loginOnly'">
   <div class="row">
     <div class="col-sm-8">
       <img src="../../../../assets/images/twoleaf2.jpg" class="embed-responsive">

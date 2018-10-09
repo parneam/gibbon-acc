@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {UserService} from '../service/user.service';
 
 @Component({
   selector: 'app-main',
@@ -8,14 +9,17 @@ import { Component, OnInit } from '@angular/core';
 export class MainComponent implements OnInit {
 
   navigator:boolean=false
-  home:boolean=false
   login:boolean=true
-  shop:boolean=false
-  loginStyle='login&register'
 
-  constructor() { }
+  constructor(private userService : UserService) { }
 
   ngOnInit() {
+
+  }
+
+  isLogIn(){
+    console.log('isLogin work :'+this.userService.isLogin());
+    return this.userService.isLogin();
   }
 
 }

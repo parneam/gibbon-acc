@@ -7,42 +7,30 @@
     <div class="card-body">
       <h4 class="card-title text-center">Register</h4>
       <form class="form-group" (ngSubmit)="onSubmit()" name="profileForm" [formGroup]="profileForm">
-
         <div class="form-group">
-          <label class="col-sm-6"> Email</label>
-          <input class="col-sm-6" type="text" formControlName="email">
-        </div>
-
-        <div class="form-group">
-          <div class="col-sm-6"></div>
-          <div class="col-sm-6" *ngIf="!profileFormErrors.email.required && profileFormErrors.email.email" class="alert alert-danger">
+          <label> Email</label>
+          <input type="text" formControlName="email">
+          <div *ngIf="!profileFormErrors.email.required && profileFormErrors.email.email" class="alert alert-danger">
             Please enter a valid email address
           </div>
         </div>
 
         <div class="form-group">
-            <label class="col-sm-6"> Password</label>
-            <input class="col-sm-6" type="password" formControlName="password">
-        </div>
-
-        <div class="form-group">
-          <div class="col-sm-6"></div>
+            <label> Password</label>
+            <input type="password" formControlName="password">
           <div *ngIf="profileFormErrors.password.required" class="alert alert-danger">
             Please enter a password
           </div>
         </div>
 
         <div class="form-group">
-          <label class="col-sm-6"> Re-Password</label>
-          <input class="col-sm-6" type="password" formControlName="rePassword">
-        </div>
-
-        <div class="form-group">
-          <div class="col-sm-6"></div>
+          <label> Re-Password</label>
+          <input type="password" formControlName="rePassword">
           <div *ngIf="profileFormErrors.rePassword.required" class="alert alert-danger">
             Please enter a re-password
           </div>
         </div>
+
         <div class="mx-auto">
           <button type="submit" class="btn btn-primary " [disabled]="profileForm.invalid">Submit</button>
         </div>
