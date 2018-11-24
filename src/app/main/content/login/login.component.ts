@@ -4,6 +4,7 @@ import 'firebase/auth';
 import {UserService} from "../../../service/user.service";
 import {App} from '../../model/app';
 import {Router} from '@angular/router';
+import * as firebase from 'firebase';
 
 @Component({
   selector: 'app-login',
@@ -12,7 +13,7 @@ import {Router} from '@angular/router';
 })
 export class LoginComponent implements OnInit {
 
-  app:App={name:'Wanlaya App'};
+  app:App={name:'Gibbon App'};
   loginForm: FormGroup;
   loginFormErrors: any;
   @Output()navigator: EventEmitter<boolean> = new EventEmitter<boolean>();
@@ -50,6 +51,7 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.userService.logout();
     this.loginForm = this.formBuilder.group({
       email   : ['soemsakplus@gmail.com', [Validators.required, Validators.email]],
       password: ['qwerty', Validators.required]
@@ -124,18 +126,47 @@ export class LoginComponent implements OnInit {
   //END
 
   onLogin(){
+    console.log('onLoginClick');
     this.userService.emailLogin(this.loginForm.get('email').value, this.loginForm.get('password').value)
+      .then(res => {
+          const user = firebase.auth().currentUser;
+          console.log(user.getIdToken());
+          if (user != null && user.emailVerified) {
+            user.providerData.forEach(function ( profile ): void {
+              console.log('Sign-in provider: ' + profile.providerId);
+              console.log('  Provider-specific UID:'  + profile.uid);
+              console.log('  Name: ' + profile.displayName);
+              console.log('  Email: ' + profile.email);
+              console.log('  Photo URL: ' + profile.photoURL);
+              console.log('logIn successful')
+            });
+            this.userService.saveUserToLocalStorage(user);
+            this.router.navigate(['/shops']); //TODO
+          } else if (user != null && user.emailVerified == false) {
+            this.userService.logout();
+            this.router.navigate(['/mail-confirm', this.loginForm.get('email').value]); //TODO
+          } else {
+            this.userService.logout();
+          }
+        }
+      )
+      .catch(error => {
+        let errorCode = error.code;
+        let errorMessage = error.message;
+        console.log('Create user error:' + errorCode + ' ' + errorMessage);
+        this.router.navigate(['/login']);
+      });
 
     console.log('form.email: '+this.loginForm.get('email').value)
     console.log('form.password: '+this.loginForm.get('password').value)
-    if(this.userService.isLogin()){
-      this.router.navigate(['shops'])
-    }
+    // if(this.userService.isLogin()){
+    //   this.router.navigate(['shops'])
+    // }
   }
 
-  onLogout(){
-    this.userService.logout()
-  }
+  // onLogout(){
+  //   this.userService.logout()
+  // }
 
   onFacebookLogin(){
     this.userService.facebookLogin()
@@ -156,6 +187,7 @@ export class LoginComponent implements OnInit {
 
   onRegister(){
     this.router.navigate(['register'])
+    // this.router.navigate(['dialogTest'])
   }
 
   // onRegisterSubmit(){

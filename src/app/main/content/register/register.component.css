@@ -1,38 +1,71 @@
-.container {
-  background-image: url("../../../../assets/images/twoleaf2.jpg");
-  background-color: #cccccc;
-  height: 800px;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  position: relative;
-}
-.row{
-  padding-top: 20px;
-}
-.card {
-  padding-top: 20px;
-}
 
-button{
-  width: 100%;
-  padding: 12px 20px;
-}
-input[type=text]{
-  width: 100%;
-  padding: 12px 20px;
-  margin: -8px 0;
-  font-size: 14px;
-  box-sizing: border-box;
-}
-input[type=password] {
-  width: 100%;
-  padding: 12px 20px;
-  margin: -8px 0;
-  font-size: 14px;
-  box-sizing: border-box;
-}
-.alert{
-  color: red;
-}
+
+  .container {
+    background-image: url("../../../../assets/images/twoleaf2.jpg");
+    background-color: #cccccc;
+    height: 800px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    /*position: relative;*/
+  }
+
+  .row {
+    padding-top: 20px;
+  }
+
+  .card {
+    padding-top: 20px;
+  }
+
+  button {
+    width: 100%;
+    padding: 12px 20px;
+  }
+
+  input[type=text] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: -8px 0;
+    font-size: 14px;
+    box-sizing: border-box;
+  }
+
+  input[type=password] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: -8px 0;
+    font-size: 14px;
+    box-sizing: border-box;
+  }
+
+  .alert {
+    color: red;
+  }
+
+  mat-form-field {
+    width: 100%;
+  }
+
+  mat-checkbox {
+    margin: 0;
+  }
+
+  .terms {
+    margin: 16px 0 32px 0;
+    font-size: 16px;
+    cursor: pointer;
+    color: blue;
+  }
+
+  .terms:hover {
+    color: cornflowerblue;
+  }
+
+  .submit-button {
+    width: 220px;
+    margin: 16px auto;
+    display: block;
+  }
+
 

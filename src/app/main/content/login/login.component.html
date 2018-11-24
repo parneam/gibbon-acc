@@ -70,7 +70,8 @@
     <div class="col-sm-8">
       <img src="../../../../assets/images/twoleaf2.jpg" class="embed-responsive">
       <div class="centered text-capitalize">
-        <h2>welcome to {{app.name}}</h2>
+        <h2>welcome to </h2>
+        <h2>{{app.name}}</h2>
       </div>
     </div>
     <div class="col-sm-4">
@@ -87,7 +88,7 @@
         <div *ngIf="loginFormErrors.password.required" class="alert alert-danger">
           Please enter a password
         </div>
-        <button type="submit" class="btn btn-primary" [disabled]="loginForm.invalid">Submit</button>
+        <button type="submit" class="btn btn-primary" [disabled]="loginForm.invalid">Log In</button>
       </form>
       <h3 class="text-center"><small>- OR -</small></h3>
       <form (ngSubmit)="onFacebookLogin()">

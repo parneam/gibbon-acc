@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {ActivatedRoute, Router} from '@angular/router';
-import {UserService} from '../../../service/user.service';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
+import { UserService } from '../../../service/user.service';
+import { TermsConditionsComponent } from './terms-conditions/terms-conditions.component';
+import { MatDialogConfig, MatDialog} from '@angular/material';
 
 @Component({
   selector: 'app-register',
@@ -20,7 +22,8 @@ export class RegisterComponent implements OnInit {
     private formBuilder: FormBuilder,
     private router : Router,
     private route: ActivatedRoute,
-    private userService: UserService
+    private userService: UserService,
+    public dialog: MatDialog,
   ) {
 
     this.registerFormErrors = {
@@ -68,7 +71,6 @@ export class RegisterComponent implements OnInit {
   }
 
   onSubmit(){
-
     console.log('on submit')
   }
 
@@ -94,5 +96,20 @@ export class RegisterComponent implements OnInit {
         let errorMessage = error.message;
         console.log('Create user error:' + errorCode + ' ' + errorMessage);
       });
+  }
+
+  openTermsAndConditions(){
+    const dialogConfig = new MatDialogConfig();
+
+    // dialogConfig.disableClose = true;
+    // dialogConfig.autoFocus = true;
+    // dialogConfig.hasBackdrop=true;
+    dialogConfig.position={ top: '-60px', left: '500px' }
+
+    const dialogRef = this.dialog.open( TermsConditionsComponent,dialogConfig);
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+    });
   }
 }

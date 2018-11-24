@@ -9,7 +9,7 @@ import {UserService} from '../service/user.service';
 export class MainComponent implements OnInit {
 
   navigator:boolean=false
-  login:boolean=true
+  login:boolean=false
 
   constructor(private userService : UserService) { }
 
@@ -18,7 +18,7 @@ export class MainComponent implements OnInit {
   }
 
   isLogIn(){
-    console.log('isLogin work :'+this.userService.isLogin());
+    // console.log('isLogin work :'+this.userService.isLogin());
     return this.userService.isLogin();
   }
 
