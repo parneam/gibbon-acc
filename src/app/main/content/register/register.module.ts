@@ -11,6 +11,7 @@ import {
   MatFormFieldModule,
   MatProgressSpinnerModule
 } from '@angular/material';
+import { AlertPopupComponent } from './alert-popup/alert-popup.component';
 
 const routes = [
   {
@@ -35,11 +36,9 @@ const routes = [
   ],
   declarations: [
     RegisterComponent,
-    TermsConditionsComponent
+    TermsConditionsComponent,
+    AlertPopupComponent
   ],
-  // exports     : [
-  //   RegisterComponent
-  // ],
-  entryComponents: [ TermsConditionsComponent ]
+  entryComponents: [ TermsConditionsComponent,AlertPopupComponent ]
 })
 export class RegisterModule { }
